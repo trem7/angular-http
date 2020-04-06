@@ -23,7 +23,7 @@ export class PostsService {
 
   fetchPosts() {
     //...
-    this.http
+    return this.http
     .get<{ [key: string]: Post }>('https://angular-http-95a20.firebaseio.com/posts.json')
     .pipe(
       map(responseData => {
@@ -33,9 +33,8 @@ export class PostsService {
             postsArray.push({ ...responseData[key], id: key });
           }
         }
-      return postsArray;
-    }))
-    .subscribe(posts => {
-    });
+        return postsArray;
+      })
+    );
   }
 }
